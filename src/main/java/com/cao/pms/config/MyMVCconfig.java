@@ -14,6 +14,7 @@ public class MyMVCconfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry){
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
+        registry.addViewController("/dashboard.html").setViewName("dashboard");
     }
 
     //自定义的国际化组件
