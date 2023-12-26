@@ -2,6 +2,7 @@ package com.cao.pms.part1.dao;
 
 import com.cao.pms.part1.pojo.Department;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -14,5 +15,5 @@ public interface DepartmentDao {
     List<Department> queryAllDepartment();
 
     //根据id查询部门
-    int queryDepartmentById();
+    Department queryDepartmentById(@Param("did") int did);
 }

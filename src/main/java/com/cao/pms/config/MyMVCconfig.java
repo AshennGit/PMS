@@ -16,6 +16,8 @@ public class MyMVCconfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
         registry.addViewController("/main.html").setViewName("dashboard");
+        registry.addViewController("/emp/Elist.html").setViewName("/emp/Elist");
+        registry.addViewController("/common/commons.html").setViewName("/common/commons");
     }
 
     //自定义的国际化组件
@@ -26,6 +28,7 @@ public class MyMVCconfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/index.html","/","/user/login","/asserts");
+        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
+                excludePathPatterns("/index.html","/","/user/login","/asserts/css/*","/asserts/js/*","/asserts/img/*");
     }
 }

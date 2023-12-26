@@ -6,4 +6,7 @@
     <select id="queryAllDepartment" resultType="Department">
         select * from department
     </select>
+    <select id="queryDepartmentById" resultType="Department" parameterType="int">
+        select * from department where did = #{did}
+    </select>
 </mapper>

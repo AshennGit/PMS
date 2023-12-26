@@ -1,6 +1,8 @@
 package com.cao.pms.part1.service.Impl;
 
+import com.cao.pms.part1.dao.DepartmentDao;
 import com.cao.pms.part1.dao.EmployeeDao;
+import com.cao.pms.part1.pojo.Department;
 import com.cao.pms.part1.pojo.Employee;
 import com.cao.pms.part1.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeDao employeeDao;
+
+    @Autowired
+    private DepartmentServiceImpl departmentService;
 
     @Override
     public List<Employee> queryAllEmployee() {
@@ -34,5 +39,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public int deleteEmployee(int eid) {
         return employeeDao.deleteEmployee(eid);
+    }
+
+    //获取部门服务
+    public String getDepartmentName(int did){
+        Department department = departmentService.queryDepartmentById(did);
+        return department.getDepartmentName();
     }
 }

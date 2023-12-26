@@ -35,7 +35,7 @@ class PmsApplicationTests {
     @Test
     void contextLoads() {
         Employee employee = service2.queryEmployeeById(1001);
-        System.out.println(employee);
+        System.out.println(employee.getDepartmentName());
     }
 
     @Test

@@ -22,7 +22,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public int queryDepartmentById() {
-        return departmentDao.queryDepartmentById();
+    public Department queryDepartmentById(int did) {
+        return departmentDao.queryDepartmentById(did);
     }
 }

@@ -11,5 +11,5 @@ public interface DepartmentService {
     List<Department> queryAllDepartment();
 
     //根据id查询部门
-    int queryDepartmentById();
+    Department queryDepartmentById(int did);
 }
