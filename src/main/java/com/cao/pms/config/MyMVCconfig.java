@@ -18,6 +18,8 @@ public class MyMVCconfig implements WebMvcConfigurer {
         registry.addViewController("/common/commons.html").setViewName("/common/commons");
         registry.addViewController("/emp/addPage.html").setViewName("/emp/addPage");
         registry.addViewController("/emp/updatePage.html").setViewName("/emp/updatePage");
+        registry.addViewController("/performance/data.html").setViewName("/performance/data");
+        registry.addViewController("/performance/Plist.html").setViewName("/performance/Plist");
     }
 
     //自定义的国际化组件
