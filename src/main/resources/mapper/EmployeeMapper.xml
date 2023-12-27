@@ -11,4 +11,17 @@
         select * from employee where eid = #{eid}
     </select>
 
+    <insert id="addEmployee" parameterType="Employee">
+        insert into pms.employee (lastName, email, gender, department) VALUES (#{lastName},#{email},#{gender},#{department})
+    </insert>
+
+    <update id="updateEmployee" parameterType="Employee">
+        update pms.employee set lastName = #{lastName},email = #{email},gender=#{gender},department=#{department}
+        where eid = #{eid};
+    </update>
+
+    <delete id="deleteEmployee" parameterType="int">
+        delete from employee where eid=#{eid}
+    </delete>
+
 </mapper>

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 	<head>
@@ -8,7 +7,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>员工管理</title>
+		<title>修改信息</title>
 		<!-- Bootstrap core CSS -->
 		<link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
 
@@ -52,37 +51,40 @@
 				<div th:replace="~{common/commons::sidebar(active='Elist.html')}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<h2>员工管理</h2>
-					<h3>
-						<a class="btn btn-sm btn-success" th:href="@{/emp/toAddPage}">添加员工</a>
-					</h3>
-					<div class="table-responsive">
-						<table class="table table-striped table-sm">
-							<thead>
-								<tr>
-									<th>员工号</th>
-									<th>员工姓名</th>
-									<th>邮箱</th>
-									<th>性别</th>
-									<th>部门编号</th>
-									<th>操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="emp:${emps}">
-									<td th:text="${emp.getEid()}"></td>
-									<td th:text="${emp.getLastName()}"></td>
-									<td th:text="${emp.getEmail()}"></td>
-									<td th:text="${emp.getGender()==0?'女':'男'}"></td>
-									<td th:text="${emp.getDepartmentName()}"></td>
-									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{/emp/toUpdatePage}+${emp.getEid()}">编辑</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/emp/deleteEmployee}+${emp.getEid()}">删除</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<form th:action="@{/emp/updateEmployee}" method="post">
+						<div class="form-group">
+							<!--隐藏域-->
+							<input type="hidden" name="eid" th:value="${QEmployee.getEid()}">
+							<label>姓名</label>
+							<input type="text" name="lastName" class="form-control" th:value="${QEmployee.getLastName()}">
+						</div>
+						<div class="form-group">
+							<label>邮箱</label>
+							<input type="email" name="email" class="form-control" th:value="${QEmployee.getEmail()}">
+						</div>
+						<div class="form-group">
+							<label>性别r</label><br>
+							<div class="form-check form-check-inline">
+								<input th:checked="${QEmployee.getGender()==1}" class="form-check-input" type="radio" name="gender" value="1">
+								<label class="form-check-label">男</label>
+							</div>
+						</div>
+						<div class="form-check form-check-inline">
+							<input th:checked="${QEmployee.getGender()==0}" class="form-check-input" type="radio" name="gender" value="0">
+							<label class="form-check-label">女</label>
+						</div>
+						<div class="form-group">
+							<label>所属部门</label>
+							<select class="form-control" name="department">
+								<!--我们在controller接收的是一个Employee，所以我们需要提交的是其中的一个属性-->
+								<option th:selected="${dept.getDid()==QEmployee.getDepartment()}" th:each="dept:${departments}"
+										th:text="${dept.getDepartmentName()}"
+										th:value="${dept.getDid()}">1
+								</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary">修改</button>
+					</form>
 				</main>
 			</div>
 		</div>

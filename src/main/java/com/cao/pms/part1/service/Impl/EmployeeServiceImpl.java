@@ -26,8 +26,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee queryEmployeeById(int id) {
-        return employeeDao.queryEmployeeById(id);
+    public Employee queryEmployeeById(int eid) {
+        return employeeDao.queryEmployeeById(eid);
     }
 
     @Override
@@ -39,6 +39,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public int deleteEmployee(int eid) {
         return employeeDao.deleteEmployee(eid);
+    }
+
+    @Override
+    public int updateEmployee(Employee employee) {
+        return  employeeDao.updateEmployee(employee);
     }
 
     //获取部门服务

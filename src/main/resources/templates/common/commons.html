@@ -4,12 +4,12 @@
 
   <!--头部导航栏-->
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" th:fragment="topbar">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" th:href="@{http://getbootstrap.com/docs/4.0/examples/dashboard/#}">[[${session
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" th:href="@{/main.html}">[[${session
     .loginUser}]]</a>
   <input class="form-control form-control-dark w-100" type="text" th:placeholder="搜索" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" th:href="@{http://getbootstrap.com/docs/4.0/examples/dashboard/#}">登出</a>
+      <a class="nav-link" th:href="@{/user/signout}">登出</a>
     </li>
   </ul>
 </nav>

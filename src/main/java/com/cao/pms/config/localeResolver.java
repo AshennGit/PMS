@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
 //地区解析器
-public class MyLocaleResolver implements LocaleResolver {
+public class localeResolver implements LocaleResolver {
 
     //解析请求
     @Override

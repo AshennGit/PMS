@@ -7,8 +7,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.Locale;
-
 @Configuration
 public class MyMVCconfig implements WebMvcConfigurer {
 
@@ -18,12 +16,14 @@ public class MyMVCconfig implements WebMvcConfigurer {
         registry.addViewController("/main.html").setViewName("dashboard");
         registry.addViewController("/emp/Elist.html").setViewName("/emp/Elist");
         registry.addViewController("/common/commons.html").setViewName("/common/commons");
+        registry.addViewController("/emp/addPage.html").setViewName("/emp/addPage");
+        registry.addViewController("/emp/updatePage.html").setViewName("/emp/updatePage");
     }
 
     //自定义的国际化组件
     @Bean
     public LocaleResolver localeResolver(){
-        return new MyLocaleResolver();
+        return new localeResolver();
     }
 
     @Override

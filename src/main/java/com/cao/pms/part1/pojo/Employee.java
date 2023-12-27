@@ -8,7 +8,6 @@ import java.util.List;
 
 //员工表
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 public class Employee {
     private Integer eid;
@@ -17,6 +16,13 @@ public class Employee {
     private Integer gender;
     private Integer department;
 
-    //存放部门真实名
+    //存放部门真实名(数据库没有该表，不需要构造)
     private String departmentName;
+
+    public Employee(String lastName, String email, Integer gender, Integer department) {
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.department = department;
+    }
 }

@@ -32,4 +32,11 @@ public class LoginController {
             return "index";
         }
     }
+
+    //注销请求（干掉session）
+    @RequestMapping("/signout")
+    public String userSignout(HttpSession session){
+        session.invalidate();
+        return "redirect:/index.html";
+    }
 }
