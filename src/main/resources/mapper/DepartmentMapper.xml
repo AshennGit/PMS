@@ -9,4 +9,18 @@
     <select id="queryDepartmentById" resultType="Department" parameterType="int">
         select * from department where did = #{did}
     </select>
+
+    <update id="updateDepartment" parameterType="Department">
+        update pms.department set departmentName = #{departmentName},parentdepart=#{parentdepart},departinfo=#{departinfo}
+        where did = #{did}
+    </update>
+
+    <insert id="addDepartment" parameterType="Department">
+        insert into pms.department (departmentName, parentdepart, departinfo)
+        values (#{departmentName},#{parentdepart},#{departinfo})
+    </insert>
+
+    <delete id="deleteDepartment" parameterType="int">
+        delete from department where did = #{did}
+    </delete>
 </mapper>

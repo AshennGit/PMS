@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cao.pms.part1.dao.ParentdepartmentDao">
+    <select id="queryParentDepartmentById" resultType="Parentdepartment" parameterType="int">
+        select * from parentdepartment where pdid=#{pdid}
+    </select>
+
+    <select id="queryAllParentDepart" resultType="Parentdepartment">
+        select * from parentdepartment
+    </select>
+</mapper>

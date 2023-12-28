@@ -55,16 +55,16 @@
 					<form th:action="@{/emp/addEmployee}" method="post">
 						<div class="form-group">
 							<label>姓名</label>
-							<input type="text" name="lastName" class="form-control" placeholder="请输入员工名">
+							<input type="text" name="lastName" class="form-control" placeholder="请输入员工名" required>
 						</div>
 						<div class="form-group">
 							<label>邮箱</label>
-							<input type="email" name="email" class="form-control" placeholder="员工邮箱">
+							<input type="email" name="email" class="form-control" placeholder="员工邮箱" required>
 						</div>
 						<div class="form-group">
 							<label>性别</label><br>
 							<div class="form-check form-check-inline">
-								<input class="form-check-input" type="radio" name="gender" value="1">
+								<input class="form-check-input" checked type="radio" name="gender" value="1">
 								<label class="form-check-label">男</label>
 							</div>
 						</div>

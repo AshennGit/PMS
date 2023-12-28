@@ -16,4 +16,13 @@ public interface DepartmentDao {
 
     //根据id查询部门
     Department queryDepartmentById(@Param("did") int did);
+
+    //根据id删除部门
+    int deleteDepartment(@Param("did") int did);
+
+    //添加部门
+    int addDepartment(Department department);
+
+    //修改部门
+    int updateDepartment(Department department);
 }
