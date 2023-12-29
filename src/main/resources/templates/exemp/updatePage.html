@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>修改信息</title>
+		<!-- Bootstrap core CSS -->
+		<link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+		<style type="text/css">
+			/* Chart.js */
+			
+			@-webkit-keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			@keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.chartjs-render-monitor {
+				-webkit-animation: chartjs-render-animation 0.001s;
+				animation: chartjs-render-animation 0.001s;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div th:replace="~{common/commons::topbar}"></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<!--公共的侧边栏-->
+				<div th:replace="~{common/commons::sidebar(active='ExempList.html')}"></div>
+
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<form th:action="@{/exemp/updateExercitation}" method="post">
+						<div class="form-group">
+							<!--隐藏域-->
+							<input type="hidden" name="exid" th:value="${QExercitation.getExid()}">
+							<label>实习生姓名</label>
+							<input type="text" name="exname" class="form-control" th:value="${QExercitation.getExname()}" required>
+						</div>
+						<div class="form-group">
+							<label>邮箱</label>
+							<input type="email" name="exemail" class="form-control" th:value="${QExercitation.getExemail()}" required>
+						</div>
+						<div class="form-group">
+							<label>性别</label><br>
+							<div class="form-check form-check-inline">
+								<input th:checked="${QExercitation.getExgender()==1}" class="form-check-input" type="radio" name="exgender" value="1">
+								<label class="form-check-label">男</label>
+							</div>
+						</div>
+						<div class="form-check form-check-inline">
+							<input th:checked="${QExercitation.getExgender()==0}" class="form-check-input" type="radio" name="exgender" value="0">
+							<label class="form-check-label">女</label>
+						</div>
+						<div class="form-group">
+							<label>所属部门</label>
+							<select class="form-control" name="exdepartment">
+								<!--我们在controller接收的是一个Employee，所以我们需要提交的是其中的一个属性-->
+								<option th:selected="${dept.getDid()==QExercitation.getExdepartment()}" th:each="dept:${departments}"
+										th:text="${dept.getDepartmentName()}"
+										th:value="${dept.getDid()}">1
+								</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>外语能力</label>
+							<select class="form-control" name="foreignskill">
+								<option th:text="无" th:value="1">1</option>
+								<option th:text="英语四级" th:value="2">2</option>
+								<option th:text="英语六级" th:value="3">3</option>
+								<option th:text="其他语种证书" th:value="4">4</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>是否调整试用期</label>
+							<select class="form-control" name="addTime">
+								<option th:selected="true" th:text="否" th:value="0">1</option>
+								<option th:text="延长1天" th:value="1">2</option>
+								<option th:text="延长一周" th:value="7">2</option>
+								<option th:text="延长一个月" th:value="31">3</option>
+								<option th:text="延长三个月" th:value="92">4</option>
+								<option th:text="延长半年" th:value="184">5</option>
+								<option th:text="延长一年" th:value="365">6</option>
+								<option th:text="减少1天" th:value="-1">2</option>
+								<option th:text="减少一周" th:value="-7">2</option>
+								<option th:text="减少一个月" th:value="-31">3</option>
+								<option th:text="减少三个月" th:value="-92">4</option>
+								<option th:text="减少半年" th:value="-184">5</option>
+								<option th:text="减少一年" th:value="-365">6</option>
+							</select>
+						</div>
+						<button type="submit" class="btn btn-primary">修改</button>
+					</form>
+				</main>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+		<script type="text/javascript" th:src="@{/asserts/js/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/asserts/js/bootstrap.min.js}"></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" th:src="@{/asserts/js/feather.min.js}"></script>
+		<script>
+			feather.replace()
+		</script>
+
+		<!-- Graphs -->
+		<script type="text/javascript" th:src="@{/asserts/js/Chart.min.js}"></script>
+	</body>
+
+</html>

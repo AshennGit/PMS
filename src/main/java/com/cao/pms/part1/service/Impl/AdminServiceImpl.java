@@ -17,6 +17,16 @@ public class AdminServiceImpl implements AdminService {
         return adminDao.queryAdminByUsername(username);
     }
 
+    @Override
+    public Admin queryAdminByAid(int aid) {
+        return adminDao.queryAdminByAid(aid);
+    }
+
+    @Override
+    public int updateUser(Admin admin) {
+        return adminDao.updateUser(admin);
+    }
+
     //登陆服务
     public int LoginService(String username,String password){
         Admin admin = adminDao.queryAdminByUsername(username);

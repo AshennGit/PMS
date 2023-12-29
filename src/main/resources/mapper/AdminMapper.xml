@@ -6,4 +6,12 @@
     <select id="queryAdminByUsername" resultType="Admin">
         select * from admin where username=#{username}
     </select>
+
+    <select id="queryAdminByAid" parameterType="int" resultType="Admin">
+        select * from admin where aid=#{aid}
+    </select>
+
+    <update id="updateUser" parameterType="Admin">
+        update pms.admin set username=#{username},password=#{password} where aid = #{aid}
+    </update>
 </mapper>

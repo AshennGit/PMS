@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 	<head>
@@ -8,7 +7,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>员工管理</title>
+		<title>账号管理</title>
 		<!-- Bootstrap core CSS -->
 		<link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
 
@@ -49,40 +48,32 @@
 		<div class="container-fluid">
 			<div class="row">
 				<!--公共的侧边栏-->
-				<div th:replace="~{common/commons::sidebar(active='Elist.html')}"></div>
+				<div th:replace="~{common/commons::sidebar}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<h2>员工管理</h2>
-					<h3>
-						<a class="btn btn-sm btn-success" th:href="@{/emp/toAddPage}">添加员工</a>
-					</h3>
-					<div class="table-responsive">
-						<table class="table table-striped table-sm">
-							<thead>
-								<tr>
-									<th>员工号</th>
-									<th>员工姓名</th>
-									<th>邮箱</th>
-									<th>性别</th>
-									<th>部门</th>
-									<th>操作</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr th:each="emp:${emps}">
-									<td th:text="${emp.getEid()}"></td>
-									<td th:text="${emp.getLastName()}"></td>
-									<td th:text="${emp.getEmail()}"></td>
-									<td th:text="${emp.getGender()==0?'女':'男'}"></td>
-									<td th:text="${emp.getDepartmentName()}"></td>
-									<td>
-										<a class="btn btn-sm btn-primary" th:href="@{/emp/toUpdatePage}+${emp.getEid()}">修改信息</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/emp/deleteEmployee}+${emp.getEid()}">辞退员工</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					<form th:action="@{/user/updateUser}" method="post">
+						<div class="form-group">
+							<!--隐藏域-->
+							<input type="hidden" name="aid" th:value="${user.getAid()}">
+							<label>账号</label>
+							<input type="text" name="username" class="form-control" th:value="${user.getUsername()}" required>
+						</div>
+						<div class="form-group">
+							<label>旧密码</label>
+							<input type="password" name="password" class="form-control" th:placeholder="请输入旧密码" required>
+							<p style="color: red" th:text="${updatemsg1}" th:if="${updatemsg1}"></p>
+						</div>
+						<div class="form-group">
+							<label>新密码(*不修改可不用输入)</label>
+							<input type="password" name="newpassword" class="form-control" th:placeholder="请输入新密码">
+						</div>
+						<div class="form-group">
+							<label>确认新密码(*不修改可不用输入)</label>
+							<input type="password" name="confirmpassword" class="form-control" th:placeholder="请再次输入新密码">
+							<p style="color: red" th:text="${updatemsg2}" th:if="${updatemsg2}"></p>
+						</div>
+						<button type="submit" class="btn btn-primary">确认修改</button>
+					</form>
 				</main>
 			</div>
 		</div>

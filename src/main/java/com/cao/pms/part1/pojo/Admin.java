@@ -6,9 +6,14 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Admin {
     private int aid;
     private String username;
     private String password;
+
+    //id自增不需要构造
+    public Admin(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cao.pms.part2.dao.ExercitationDao">
+    <select id="queryAllExercitation" resultType="Exercitation">
+        select * from exercitation
+    </select>
+
+    <select id="queryExercitationById" parameterType="int" resultType="Exercitation">
+        select * from exercitation where exid = #{exid}
+    </select>
+
+    <insert id="addExercitation" parameterType="Exercitation">
+        insert into pms.exercitation (exname, exemail, exgender, exdepartment, foreignskill) VALUES
+            (#{exname},#{exemail},#{exgender},#{exdepartment},#{foreignskill})
+    </insert>
+
+    <update id="updateExercitation" parameterType="Exercitation">
+        update pms.exercitation set exname = #{exname},exemail =
+            #{exemail},exgender=#{exgender},exdepartment=#{exdepartment},foreignskill=#{foreignskill}
+        where exid = #{exid};
+    </update>
+
+    <delete id="deleteExercitation" parameterType="int">
+        delete from exercitation where exid=#{exid}
+    </delete>
+
+    <update id="updateExercitationDepart" parameterType="ExercitationDepartVO">
+        update exercitation set exdepartment = #{exdepartment} where exid=#{exid};
+    </update>
+
+    <update id="addExerDate" parameterType="ExercitationDateVO">
+        update exercitation set exdate = DATE_ADD(exdate,INTERVAL #{addTime} DAY) where exid=#{exid}
+    </update>
+
+    <update id="subExerDate" parameterType="ExercitationDateVO">
+        update exercitation
+        set
+            exdate = if(DATE_SUB(exdate,INTERVAL #{addTime} DAY)>now(),DATE_SUB(exdate,INTERVAL #{addTime} DAY),now())
+        where exid=#{exid}
+    </update>
+</mapper>
