@@ -24,4 +24,7 @@ public interface EmployeeDao {
 
     //修改员工信息
     int updateEmployee(Employee employee);
+
+    //更新员工部门
+    int updateEmployeeDepart(@Param("eid") int eid, @Param("department") int department);
 }

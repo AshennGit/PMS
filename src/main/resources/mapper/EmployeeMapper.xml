@@ -24,4 +24,8 @@
         delete from employee where eid=#{eid}
     </delete>
 
+    <update id="updateEmployeeDepart" parameterType="EmployeeDepartVO">
+        update employee set department = #{department} where eid=#{eid};
+    </update>
+
 </mapper>

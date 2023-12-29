@@ -26,7 +26,15 @@ public class EmployeeController {
     public String List(Model model){
         List<Employee> employees = employeeService.queryAllEmployee();
         for (Employee employee:employees){
-            employee.setDepartmentName(employeeService.getDepartmentName(employee.getDepartment()));
+            String departmentName = employeeService.getDepartmentName(employee.getDepartment());
+            if(!departmentName.equals("部门被删了")) {
+                employee.setDepartmentName(departmentName);
+            }else{
+                //如果部门被删了为空就更新员工信息
+                employeeService.updateEmployeeDepart(employee.getEid(),100);
+                String departmentNameNew = employeeService.getDepartmentName(100);
+                employee.setDepartmentName(departmentNameNew);
+            }
         }
         model.addAttribute("emps",employees);
         return "/emp/Elist";

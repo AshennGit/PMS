@@ -46,9 +46,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         return  employeeDao.updateEmployee(employee);
     }
 
+    @Override
+    public int updateEmployeeDepart(int eid, int department) {
+        return employeeDao.updateEmployeeDepart(eid,department);
+    }
+
     //获取部门服务
     public String getDepartmentName(int did){
         Department department = departmentService.queryDepartmentById(did);
-        return department.getDepartmentName();
+        if(department!=null){
+            return department.getDepartmentName();
+        }else{
+            return "部门被删了";
+        }
     }
 }

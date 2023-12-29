@@ -17,4 +17,6 @@ public interface EmployeeService {
 
     //修改员工信息
     int updateEmployee(Employee employee);
+
+    int updateEmployeeDepart(int eid, int department);
 }
