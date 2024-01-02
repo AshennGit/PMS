@@ -79,7 +79,8 @@
 									<td th:text="${depart.getDepartinfo()}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/department/toDupdatePage}+${depart.getDid()}" >修改信息</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/department/deleteDepartment}+${depart.getDid()}" >删除部门</a>
+										<a class="btn btn-sm btn-danger" th:href="@{/department/deleteDepartment}+${depart.getDid()}"
+										   onclick="return confirm('真的要删除吗？');" >删除部门</a>
 									</td>
 								</tr>
 							</tbody>

@@ -87,7 +87,8 @@
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/exemp/toUpdatePage}+${exemp.getExid()}" >修改</a>
 										<a class="btn btn-sm btn-success" th:href="@{/exemp/changeExercitation}+${exemp.getExid()}">转正</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/exemp/deleteExercitation}+${exemp.getExid()}">辞退</a>
+										<a class="btn btn-sm btn-danger" th:href="@{/exemp/deleteExercitation}+${exemp.getExid()}"
+										   onclick="return confirm('真的要辞退该实习生吗？');">辞退</a>
 									</td>
 								</tr>
 							</tbody>

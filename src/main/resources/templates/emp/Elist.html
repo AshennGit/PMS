@@ -77,7 +77,8 @@
 									<td th:text="${emp.getDepartmentName()}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/emp/toUpdatePage}+${emp.getEid()}">修改信息</a>
-										<a class="btn btn-sm btn-danger" th:href="@{/emp/deleteEmployee}+${emp.getEid()}">辞退员工</a>
+										<a class="btn btn-sm btn-danger" th:href="@{/emp/deleteEmployee}+${emp.getEid() }"
+										   onclick="return confirm('真的要辞退该员工吗？');">辞退员工</a>
 									</td>
 								</tr>
 							</tbody>
