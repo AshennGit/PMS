@@ -63,7 +63,8 @@
 									<th>部门编号</th>
 									<th>部门名称</th>
 									<th>上级部门</th>
-									<th>部门人数</th>
+									<th>正式员工数</th>
+									<th>实习生人数</th>
 									<th>部门信息</th>
 									<th>操作</th>
 								</tr>
@@ -74,6 +75,7 @@
 									<td th:text="${depart.getDepartmentName()}"></td>
 									<td th:text="${depart.getParentName()}"></td>
 									<td th:text="${depart.getEmpNums()}"></td>
+									<td th:text="${depart.getExempNums()}"></td>
 									<td th:text="${depart.getDepartinfo()}"></td>
 									<td>
 										<a class="btn btn-sm btn-primary" th:href="@{/department/toDupdatePage}+${depart.getDid()}" >修改信息</a>

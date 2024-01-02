@@ -5,6 +5,8 @@ import com.cao.pms.part1.pojo.Department;
 import com.cao.pms.part1.pojo.Employee;
 import com.cao.pms.part1.pojo.Parentdepartment;
 import com.cao.pms.part1.service.DepartmentService;
+import com.cao.pms.part2.pojo.Exercitation;
+import com.cao.pms.part2.service.Impl.ExercitationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,9 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
     private EmployeeServiceImpl employeeService;
+
+    @Autowired
+    private ExercitationServiceImpl exercitationService;
 
     @Autowired
     private ParentdepartmentServiceImpl parentdepartmentService;
@@ -62,12 +67,23 @@ public class DepartmentServiceImpl implements DepartmentService {
         return allDepartExNull;
     }
 
-    //统计人数服务
+    //统计人数服务（正式员工）
     public int getNumCount(int did){
         int count=0;
         List<Employee> employees = employeeService.queryAllEmployee();
         for(Employee employee:employees){
             if(employee.getDepartment()==did){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int getExNumCount(int did){
+        int count=0;
+        List<Exercitation> exercitations = exercitationService.queryAllExercitation();
+        for(Exercitation exercitation:exercitations){
+            if(exercitation.getExdepartment()==did){
                 count++;
             }
         }

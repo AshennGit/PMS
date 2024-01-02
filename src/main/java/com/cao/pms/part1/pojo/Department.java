@@ -15,6 +15,7 @@ public class Department {
 
     //数据库没有的属性
     private int empNums;
+    private int exempNums;
     private String parentName;
 
     public Department(String departmentName, Integer parentdepart, String departinfo) {

@@ -28,11 +28,13 @@ public class DepartmentController {
     @RequestMapping("/toDlist")
     public String toDlist(Model model){
         List<Department> departments = departmentService.queryAllDepartmentExNull();
-        //遍历所有部门，将人数查询出来放进去
+        //遍历所有部门，将正式员工人数和实习生人数查询出来放进去
         //遍历所有部门，将上级部门名查出来放进去
         for(Department department:departments){
             int numCount = departmentService.getNumCount(department.getDid());
             department.setEmpNums(numCount);
+            int exnumCount = departmentService.getExNumCount(department.getDid());
+            department.setExempNums(exnumCount);
 
             Parentdepartment parName = departmentService.getParName(department.getParentdepart());
             department.setParentName(parName.getPdname());
