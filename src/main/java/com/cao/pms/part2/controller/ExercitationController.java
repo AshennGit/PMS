@@ -85,13 +85,14 @@ public class ExercitationController {
                                      @RequestParam("exdepartment") int exdepartment,
                                      Integer foreignskill,
                                      @RequestParam("addTime") int addTime){
-        exercitationService.updateExercitation(new Exercitation(exname,exemail,exgender,exdepartment,foreignskill));
         if(addTime>=0){
             exercitationService.addExerDate(exid,addTime);
         }else{
             exercitationService.subExerDate(exid,-addTime);
         }
-
+        Exercitation exercitation = new Exercitation(exname, exemail, exgender, exdepartment, foreignskill);
+        exercitation.setExid(exid);
+        exercitationService.updateExercitation(exercitation);
         return "redirect:/exemp/selectAll";
     }
 
