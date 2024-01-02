@@ -14,7 +14,7 @@
 
 	<body class="text-center">
 		<form class="form-signin" th:action="@{/user/login}">
-			<img class="mb-4" th:src="@{/asserts/img/bootstrap-solid.svg}" alt="" width="72" height="72">
+			<img class="mb-4" th:src="@{/asserts/img/indexpicture.png}" alt="" width="144" height="144">
 			<h1 class="h3 mb-3 font-weight-normal" th:text="#{login.tip}">Please sign in</h1>
 
 			<p style="color: red" th:text="${msg}" th:if="${msg}"></p>
@@ -32,7 +32,7 @@
 			<p class="mt-5 mb-3 text-muted">© 2023-2024</p>
 			<a class="btn btn-sm" th:href="@{/index.html(l='zh_CN')}">中文</a>
 			<a class="btn btn-sm" th:href="@{/index.html(l='en_US')}">English</a>
-			<p class="mt-5 mb-3 text-muted">by 金科实训小组</p>
+			<p class="mt-5 mb-3 text-muted">by 21软三第二组</p>
 		</form>
 
 	</body>

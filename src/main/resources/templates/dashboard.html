@@ -49,7 +49,90 @@
 			<div class="row">
 				<!--侧边栏-->
 				<div th:replace="~{common/commons::sidebar(active='main.html')}"></div>
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
 
+					<div class="container marketing">
+						<div class="row">
+							<div class="col-lg-4">
+								<img class="rounded-circle" th:src="@{/asserts/img/indexpicture.png}" alt="Generic placeholder image" width="140" height="140">
+								<h2>系统介绍</h2>
+								<p>本系统为企业后台管理员工信息，有员工管理，绩效考核，部门管理，实习管理等几大模块，简洁高效，方便企业使用</p>
+							</div><!-- /.col-lg-4 -->
+						</div><!-- /.row -->
+						<!-- START THE FEATURETTES -->
+						<hr class="featurette-divider">
+
+						<div class="row featurette">
+							<div class="col-md-7">
+								<h2 class="featurette-heading">员工管理 .<span class="text-muted">增删改查</span></h2>
+								<p class="lead">好的管理，最关键就是要有好的管理架构，把一个本来水平一般的人，放在合适的位置，通过大量的激励和训练，让他变得非常高效。</p>
+							</div>
+							<div class="col-md-5">
+								<img class="featurette-image img-fluid mx-auto" th:src="@{/asserts/img/solid3.png}" alt="图片" width="500" height="500">
+							</div>
+						</div>
+
+						<hr class="featurette-divider">
+
+						<div class="row featurette">
+							<div class="col-md-7 order-md-2">
+								<h2 class="featurette-heading">绩效考核 .<span class="text-muted">可视化数据</span></h2>
+								<p class="lead"> 绩效是工作流程中各个环节的输出值，岗位绩效是小输出、局部的输出，公司的业绩则是大输出、整体的输出。没有小输出、没有局部的输出，整体的输出、整体的业绩就无从谈起-----这正是必须实施岗位绩效考核的原因所在</p>
+							</div>
+							<div class="col-md-5 order-md-1">
+								<img class="featurette-image img-fluid mx-auto" th:src="@{/asserts/img/solid5.png}" alt="图片" width="500" height="500">
+							</div>
+						</div>
+
+						<hr class="featurette-divider">
+
+						<div class="row featurette">
+							<div class="col-md-7">
+								<h2 class="featurette-heading">部门管理 .<span class="text-muted">统计人数</span></h2>
+								<p class="lead">部门除了能够跟上市场形势，还得完成公司的增长指标，还需要发掘并孵化新的增长点。这就要求部门整体需要有整体进化能力，才能跟上市场节奏并完成公司制定的增长要求。</p>
+							</div>
+							<div class="col-md-5">
+								<img class="featurette-image img-fluid mx-auto" th:src="@{/asserts/img/solid4.png}" alt="图片" width="500" height="500">
+							</div>
+						</div>
+
+						<hr class="featurette-divider">
+
+						<div class="row featurette">
+							<div class="col-md-7 order-md-2">
+								<h2 class="featurette-heading">实习管理 .<span class="text-muted">试用期转正</span></h2>
+								<p class="lead">进一步规范公司实习生的管理工作，更好的开展人力资源和成本费用工作，结合公司实际，为给广大院校学生提供就业机会，选拔优秀学生，为公司人才队伍注入新生力量，保持团队活力</p>
+							</div>
+							<div class="col-md-5 order-md-1">
+								<img class="featurette-image img-fluid mx-auto" th:src="@{/asserts/img/solid2.png}" alt="图片" width="500" height="500">
+							</div>
+						</div>
+
+						<hr class="featurette-divider">
+
+						<div class="row featurette">
+							<div class="col-md-7">
+								<h2 class="featurette-heading">薪资结算 .<span class="text-muted">待完善</span></h2>
+								<p class="lead">做为管理者，一定要把责任划分到人，与他的利益相关。这个利益不仅仅是钱，还有其他的.</p>
+							</div>
+							<div class="col-md-5">
+								<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="图片">
+							</div>
+						</div>
+
+						<hr class="featurette-divider">
+
+						<!-- /END THE FEATURETTES -->
+
+					</div><!-- /.container -->
+
+
+					<!-- FOOTER -->
+					<footer class="container">
+						<p class="float-right"><a href="#">返回顶部</a></p>
+						<p>&copy; 2023-2024 软件工程3班·第二组 &middot; <a href="#">隐私</a> &middot; <a href="#">条例</a></p>
+					</footer>
+				</main>
 			</div>
 		</div>
 
