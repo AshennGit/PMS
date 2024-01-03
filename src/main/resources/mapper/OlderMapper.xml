@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cao.pms.part2.dao.OlderDao">
+    <select id="selectOlder" resultType="Older">
+        select * from pms.older
+    </select>
+
+    <select id="selectaOlder" resultType="Older" parameterType="String">
+        select * from pms.older where teleph = #{teleph}
+    </select>
+
+    <insert id="addOlder" parameterType="Older">
+        insert into pms.older (name, address, age, service_year, teleph) values(#{name},#{address},#{age},#{service_year},#{teleph})
+    </insert>
+
+    <delete id="deleteOlder" parameterType="Older">
+        delete from pms.older where teleph = #{teleph}
+    </delete>
+
+    <update id="updateOlder" parameterType="Older">
+        update pms.older set name = #{name},address =
+            #{address},age=#{age},service_year=#{service_year},teleph=#{teleph}
+        where eid= #{eid};
+    </update>
+
+</mapper>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>退休人员管理</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+    <style type="text/css">
+        /* Chart.js */
+
+        @-webkit-keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: 0.99
+            }
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            -webkit-animation: chartjs-render-animation 0.001s;
+            animation: chartjs-render-animation 0.001s;
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:replace="~{common/commons::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!--公共的侧边栏-->
+        <div th:replace="~{common/commons::sidebar(active='Older.html')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <h2>退休人员管理</h2>
+            <h3>
+                <a class="btn btn-sm btn-dark" th:href="@{/older/toAddPage}">添加退休人员</a>
+            </h3>
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>退休人员编号</th>
+                        <th>姓名</th>
+                        <th>年龄</th>
+                        <th>地址</th>
+                        <th>电话</th>
+                        <th>工作年限</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="old:${laoren}">
+                        <td th:text="${old.getEid()}"></td>
+                        <td th:text="${old.getName()}"></td>
+                        <td th:text="${old.getAge()}"></td>
+                        <td th:text="${old.getAddress()}"></td>
+                        <td th:text="${old.getTeleph()}"></td>
+                        <td th:text="${old.getService_year()}"></td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" th:href="@{/older/toUpdatePage}+${old.getTeleph()}">修改</a>
+                            <a class="btn btn-sm btn-danger" th:href="@{/older/deleteOlder}+${old.getTeleph()}"
+                               onclick="return confirm('真的要删除吗？');">删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+<script type="text/javascript" th:src="@{/asserts/js/popper.min.js}"></script>
+<script type="text/javascript" th:src="@{/asserts/js/bootstrap.min.js}"></script>
+
+<!-- Icons -->
+<script type="text/javascript" th:src="@{/asserts/js/feather.min.js}"></script>
+<script>
+    feather.replace()
+</script>
+
+<!-- Graphs -->
+<script type="text/javascript" th:src="@{/asserts/js/Chart.min.js}"></script>
+</body>
+
+</html>
