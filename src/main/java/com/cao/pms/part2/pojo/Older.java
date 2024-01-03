@@ -11,9 +11,9 @@ public class Older {
 
     private int eid;
 
-    private String address;
-
     private String name;
+
+    private String address;
 
     private int age;
 
@@ -21,7 +21,7 @@ public class Older {
 
     private String teleph;
 
-    public Older(String address, String name, int age, int service_year, String teleph) {
+    public Older( String name,String address, int age, int service_year, String teleph) {
         this.address = address;
         this.name = name;
         this.age = age;
@@ -29,7 +29,7 @@ public class Older {
         this.teleph = teleph;
     }
 
-    public Older(int eid, String address, String name, int age, int service_year, String teleph) {
+    public Older(int eid, String name,String address, int age, int service_year, String teleph) {
         this.eid = eid;
         this.address = address;
         this.name = name;
