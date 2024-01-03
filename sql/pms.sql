@@ -39,7 +39,7 @@ CREATE TABLE `department` (
   `did` int NOT NULL AUTO_INCREMENT COMMENT '部门id',
   `departmentName` char(20) DEFAULT NULL COMMENT '部门名',
   `parentdepart` int NOT NULL DEFAULT '10' COMMENT '所属上级部门',
-  `departinfo` char(20) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '部门介绍',
+  `departinfo` char(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL COMMENT '部门介绍',
   `departSalaryCoe` float NOT NULL DEFAULT '0.01' COMMENT '部门薪资系数',
   PRIMARY KEY (`did`)
 ) ENGINE=InnoDB AUTO_INCREMENT=119 DEFAULT CHARSET=utf8mb3;
@@ -55,7 +55,7 @@ DROP TABLE IF EXISTS `employee`;
 CREATE TABLE `employee` (
   `eid` int NOT NULL AUTO_INCREMENT,
   `lastName` char(20) DEFAULT NULL,
-  `email` char(20) DEFAULT NULL,
+  `email` char(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `gender` int NOT NULL DEFAULT '1' COMMENT '0女1男',
   `department` int NOT NULL DEFAULT '100' COMMENT '员工所属部门',
   PRIMARY KEY (`eid`)
@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS `exercitation`;
 CREATE TABLE `exercitation` (
   `exid` int NOT NULL AUTO_INCREMENT,
   `exname` char(20) DEFAULT NULL,
-  `exemail` char(20) DEFAULT NULL,
+  `exemail` char(40) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
   `exgender` int NOT NULL DEFAULT '1',
   `exdepartment` int NOT NULL DEFAULT '100',
   `foreignskill` int NOT NULL DEFAULT '1',
@@ -92,16 +92,16 @@ DROP TABLE IF EXISTS `older`;
 CREATE TABLE `older` (
   `eid` int NOT NULL AUTO_INCREMENT,
   `name` char(20) DEFAULT NULL,
-  `address` char(99) DEFAULT NULL,
+  `address` char(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `age` int DEFAULT NULL,
   `service_year` int DEFAULT NULL,
   `teleph` char(20) DEFAULT NULL,
   PRIMARY KEY (`eid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 /*Data for the table `older` */
 
-insert  into `older`(`eid`,`name`,`address`,`age`,`service_year`,`teleph`) values (1,'孙杰克','大都城',18,12,'198623432342'),(5,'asdsad','2342',123,345,'53452523');
+insert  into `older`(`eid`,`name`,`address`,`age`,`service_year`,`teleph`) values (1,'孙杰克','大都城',18,12,'198623432342'),(5,'asdsad','2342',123,345,'53452523'),(7,'zts','zt',123,3,'456');
 
 /*Table structure for table `parentdepartment` */
 
