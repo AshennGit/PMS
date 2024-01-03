@@ -28,16 +28,8 @@ public class PerformanceController {
     //跳转到考核List
     @RequestMapping("/toPlist")
     public String toPlist(Model model){
-        List<Employee> employees = employeeService.queryAllEmployee();
-        List<WeekPerformance> weekPerformanceList = new ArrayList<>();
-        //获取到考核表对应的员工姓名,再将员工姓名存到List的每个元素中
-        for(Employee employee:employees){
-            WeekPerformance weekPerformance = weekPerformanceService.queryWeekPerformance(employee.getEid());
-            if(weekPerformance!=null){
-                weekPerformance.setEName(employee.getLastName());
-                weekPerformanceList.add(weekPerformance);
-            }
-        }
+
+        List<WeekPerformance> weekPerformanceList = weekPerformanceService.queryEmpPerformance();
 
         model.addAttribute("WeekList",weekPerformanceList);
 

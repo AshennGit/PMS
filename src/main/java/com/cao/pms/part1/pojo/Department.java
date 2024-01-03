@@ -12,6 +12,8 @@ public class Department {
     private String departmentName;
     private Integer parentdepart;
     private String departinfo;
+    //部门薪资系数
+    private float departSalaryCoe;
 
     //数据库没有的属性
     private int empNums;

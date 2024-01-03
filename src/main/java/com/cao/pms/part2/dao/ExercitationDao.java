@@ -36,4 +36,7 @@ public interface ExercitationDao {
     //试用期减少
     int subExerDate(@Param("exid") int exid, @Param("addTime") int addTime);
 
+    //修改实习生日薪
+    int updateExerSalary(@Param("exid") int exid, @Param("salary") int salary);
+
 }

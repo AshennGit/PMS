@@ -40,4 +40,10 @@
             exdate = if(DATE_SUB(exdate,INTERVAL #{addTime} DAY)>now(),DATE_SUB(exdate,INTERVAL #{addTime} DAY),now())
         where exid=#{exid}
     </update>
+
+    <update id="updateExerSalary" parameterType="ExercitationSalaryVO">
+        update exercitation
+        set salary = #{salary}
+        where exid=#{exid}
+    </update>
 </mapper>

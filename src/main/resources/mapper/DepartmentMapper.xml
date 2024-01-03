@@ -23,4 +23,8 @@
     <delete id="deleteDepartment" parameterType="int">
         delete from department where did = #{did}
     </delete>
+
+    <update id="updateDepartSalaryCoe" parameterType="DepartSalaryVO">
+        update department set departSalaryCoe = #{departSalaryCoe} where did = #{did}
+    </update>
 </mapper>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>薪资结算</title>
+		<!-- Bootstrap core CSS -->
+		<link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link th:href="@{/asserts/css/dashboard.css}" rel="stylesheet">
+		<style type="text/css">
+			/* Chart.js */
+			
+			@-webkit-keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			@keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.chartjs-render-monitor {
+				-webkit-animation: chartjs-render-animation 0.001s;
+				animation: chartjs-render-animation 0.001s;
+			}
+		</style>
+	</head>
+
+	<script>
+		function carton() {
+			console.log(document.querySelector("button"));
+			document.querySelector("span").style.animation = "3s alert forwards";
+		}
+	</script>
+
+	<body>
+
+		<div th:replace="~{common/commons::topbar}"></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<!--公共的侧边栏-->
+				<div th:replace="~{common/commons::sidebar(active='SalaryCompute.html')}"></div>
+
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<h2>薪资结算</h2>
+					<div style="display: inline-block">
+						<a class="btn btn-sm btn-dark" th:href="@{/salary/empSalaryList}">正式员工薪资</a>
+						<a class="btn btn-sm btn-dark" th:href="@{/salary/exempSalaryList}">实习生薪资</a>
+						<a class="btn btn-sm btn-primary" th:href="@{/salary/toCoeList}">部门薪资系数</a>
+					</div>
+					<div style="display: flex; float: right;" >
+						<h5>本月工作日数量</h5>
+						<form th:action="@{/salary/updateWorkDay}" method="post">
+							<input type="hidden" name="wid" th:class="form-control" th:value="1" >
+							<label>
+								<input type="number" name="workday" step="1"
+									   oninput="if(value>31)value=31;if(value.length>4)value=value.slice(0,4);if(value<0)value=0"
+									   th:class="form-control"
+									   th:placeholder="请输入数字"
+									   th:value="${workday.getWorkday()}"
+									   required>
+							</label>
+							<button type="submit" class="btn btn-primary" >确认</button>
+						</form>
+					</div>
+					<div class="table-responsive">
+						<table class="table table-striped table-sm">
+							<thead>
+								<tr>
+									<th>实习生编号</th>
+									<th>姓名</th>
+									<th>实习部门</th>
+									<th>月薪(元/月)</th>
+									<th>日薪(元/天)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="exempSalary:${exercitations}">
+									<td th:text="${exempSalary.getExid()}"></td>
+									<td th:text="${exempSalary.getExname()}"></td>
+									<td th:text="${exempSalary.getDepartmentName()}"></td>
+									<td th:text="${exempSalary.getMonthSalary()}"></td>
+									<td>
+										<form th:action="@{/salary/updateExempSalary}" method="post">
+											<input type="hidden" name="exid" th:class="form-control" th:value="${exempSalary.getExid()}">
+											<label>
+												<input type="number" name="salary" step="1"
+													   oninput="if(value>300)value=300;if(value.length>4)value=value.slice(0,4);if(value<0)value=0"
+													   th:class="form-control"
+													   th:placeholder="请输入数字"
+													   th:value="${exempSalary.getSalary()}" required>
+											</label>
+											<button onclick="carton()" type="submit" class="btn btn-primary" >确认修改</button>
+										</form>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<br>
+					<br>
+					<h5>
+						注:	实习生薪资按工作日计入
+					</h5>
+				</main>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" th:src="@{/asserts/js/jquery-3.2.1.slim.min.js}"></script>
+		<script type="text/javascript" th:src="@{/asserts/js/popper.min.js}"></script>
+		<script type="text/javascript" th:src="@{/asserts/js/bootstrap.min.js}"></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" th:src="@{/asserts/js/feather.min.js}"></script>
+		<script>
+			feather.replace()
+		</script>
+
+		<!-- Graphs -->
+		<script type="text/javascript" th:src="@{/asserts/js/Chart.min.js}"></script>
+	</body>
+
+</html>

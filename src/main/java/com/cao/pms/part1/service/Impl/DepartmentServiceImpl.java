@@ -55,6 +55,11 @@ public class DepartmentServiceImpl implements DepartmentService {
         return departmentDao.updateDepartment(department);
     }
 
+    @Override
+    public int updateDepartSalaryCoe(int did, float salaryCoe) {
+        return departmentDao.updateDepartSalaryCoe(did,salaryCoe);
+    }
+
     //查询所有部门但是排除部门表中的暂无部门
     public List<Department> queryAllDepartmentExNull() {
         List<Department> allDepartExNull = new ArrayList<>();

@@ -29,4 +29,6 @@ public interface ExercitationService {
 
     //试用期减少
     int subExerDate(int exid, int addTime);
+
+    int updateExerSalary(int exid,int salary);
 }

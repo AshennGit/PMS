@@ -29,17 +29,6 @@ public class ExercitationController {
     @RequestMapping("/selectAll")
     public String List(Model model){
         List<Exercitation> exercitations = exercitationService.queryAllExercitation();
-        for (Exercitation exercitation:exercitations){
-            String departmentName = exercitationService.getDepartmentName(exercitation.getExdepartment());
-            if(!departmentName.equals("部门被删了")) {
-                exercitation.setDepartmentName(departmentName);
-            }else{
-                //如果部门被删了为空就更新实习生信息
-                exercitationService.updateExercitationDepart(exercitation.getExid(),100);
-                String departmentNameNew = exercitationService.getDepartmentName(100);
-                exercitation.setDepartmentName(departmentNameNew);
-            }
-        }
         model.addAttribute("exemps",exercitations);
         return "/exemp/ExempList";
     }

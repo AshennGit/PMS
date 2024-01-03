@@ -8,7 +8,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>绩效考核</title>
+		<title>部门薪资系数</title>
 		<!-- Bootstrap core CSS -->
 		<link th:href="@{/asserts/css/bootstrap.min.css}" rel="stylesheet">
 
@@ -41,7 +41,6 @@
 			}
 		</style>
 	</head>
-
 	<body>
 
 		<div th:replace="~{common/commons::topbar}"></div>
@@ -49,38 +48,38 @@
 		<div class="container-fluid">
 			<div class="row">
 				<!--公共的侧边栏-->
-				<div th:replace="~{common/commons::sidebar(active='Plist.html')}"></div>
+				<div th:replace="~{common/commons::sidebar(active='SalaryCompute.html')}"></div>
 
 				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-					<h2>绩效考核(分数)</h2>
-					<br><br>
+					<h2>部门薪资系数</h2>
+					<a class="btn btn-primary" th:href="@{/salary/empSalaryList}">返回</a>
 					<div class="table-responsive">
 						<table class="table table-striped table-sm">
 							<thead>
 								<tr>
-									<th>员工姓名</th>
-									<th>Sun</th>
-									<th>Mon</th>
-									<th>Tue</th>
-									<th>Wed</th>
-									<th>Thu</th>
-									<th>Fri</th>
-									<th>Sat</th>
-									<th>操作</th>
+									<th>部门编号</th>
+									<th>部门名称</th>
+									<th>部门信息</th>
+									<th>薪资系数</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="week:${WeekList}">
-									<td th:text="${week.getEName()}"></td>
-									<td th:text="${week.getSun()}"></td>
-									<td th:text="${week.getMon()}"></td>
-									<td th:text="${week.getTue()}"></td>
-									<td th:text="${week.getWed()}"></td>
-									<td th:text="${week.getThu()}"></td>
-									<td th:text="${week.getFri()}"></td>
-									<td th:text="${week.getSat()}"></td>
+								<tr th:each="depart:${allDepartment}">
+									<td th:text="${depart.getDid()}"></td>
+									<td th:text="${depart.getDepartmentName()}"></td>
+									<td th:text="${depart.getDepartinfo()}"></td>
 									<td>
-										<a class="btn btn-sm btn-dark" th:href="@{/appraisal/showdata}+${week.getEid()}">可视化数据</a>
+										<form th:action="@{/salary/updateCoe}" method="post">
+											<input type="hidden" name="did" th:class="form-control" th:value="${depart.getDid()}">
+											<label>
+												<input type="number" name="departSalaryCoe" step="0.01"
+													   oninput="if(value>1)value=1;if(value.length>4)value=value.slice(0,4);if(value<0)value=0"
+													   th:class="form-control"
+													   th:placeholder="请输入数字"
+													   th:value="${depart.getDepartSalaryCoe()}" required>
+											</label>
+											<button type="submit" class="btn btn-primary" >确认修改</button>
+										</form>
 									</td>
 								</tr>
 							</tbody>

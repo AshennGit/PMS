@@ -25,4 +25,7 @@ public interface DepartmentDao {
 
     //修改部门
     int updateDepartment(Department department);
+
+    //修改部门薪资系数
+    int updateDepartSalaryCoe(@Param("did") int did, @Param("departSalaryCoe") float salaryCoe);
 }

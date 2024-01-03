@@ -17,6 +17,9 @@ public class Exercitation {
     private Integer exgender;
     private Integer exdepartment;
     private Integer foreignskill;
+    private Integer salary;
+
+    private Integer monthSalary;
 
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private Date exdate;

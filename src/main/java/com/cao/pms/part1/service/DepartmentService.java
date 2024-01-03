@@ -22,4 +22,7 @@ public interface DepartmentService {
 
     //修改部门
     int updateDepartment(Department department);
+
+    //修改部门薪资系数
+    int updateDepartSalaryCoe(int did, float salaryCoe);
 }

@@ -5,6 +5,8 @@ import com.cao.pms.part1.service.Impl.DepartmentServiceImpl;
 import com.cao.pms.part2.dao.ExercitationDao;
 import com.cao.pms.part2.pojo.Exercitation;
 import com.cao.pms.part2.service.ExercitationService;
+import com.cao.pms.part3.pojo.Work;
+import com.cao.pms.part3.service.Impl.WorkServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +21,30 @@ public class ExercitationServiceImpl implements ExercitationService {
     @Autowired
     private DepartmentServiceImpl departmentService;
 
+    @Autowired
+    private WorkServiceImpl workService;
+
     @Override
     public List<Exercitation> queryAllExercitation() {
-        return exercitationDao.queryAllExercitation();
+        List<Exercitation> exercitations = exercitationDao.queryAllExercitation();
+        Work work = workService.getWorkDay(1);//本月工作日
+        int workday = work.getWorkday();
+        for (Exercitation exercitation:exercitations){
+            //部门赋值
+            String departmentName = getDepartmentName(exercitation.getExdepartment());
+            if(!departmentName.equals("部门被删了")) {
+                exercitation.setDepartmentName(departmentName);
+            }else{
+                //如果部门被删了为空就更新实习生信息
+                exercitationDao.updateExercitationDepart(exercitation.getExid(),100);
+                String departmentNameNew = getDepartmentName(100);
+                exercitation.setDepartmentName(departmentNameNew);
+            }
+            //月薪赋值
+            int MonSalary=workday*exercitation.getSalary();
+            exercitation.setMonthSalary(MonSalary);
+        }
+        return exercitations;
     }
 
     @Override
@@ -59,6 +82,11 @@ public class ExercitationServiceImpl implements ExercitationService {
         return exercitationDao.subExerDate(exid,addTime);
     }
 
+    @Override
+    public int updateExerSalary(int exid, int salary) {
+        return exercitationDao.updateExerSalary(exid,salary);
+    }
+
     //获取部门服务
     public String getDepartmentName(int did){
         Department department = departmentService.queryDepartmentById(did);
@@ -68,4 +96,6 @@ public class ExercitationServiceImpl implements ExercitationService {
             return "部门被删了";
         }
     }
+
+
 }
